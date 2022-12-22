@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Post</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<h1>
+    Posts:
+</h1>
+<section>
+    <% for (var i in posts) { %>
+        <% var post = posts[i]; %>
+        <article class="postShow">
+           
+                <% include ../attachments/attachment %>
+                <a href="/posts/<%= post.id %>" <%= post.title %></a>
+            
+                <a href="/posts/<%= post.id %>" class="button">Show</a>
+            
+                <a href="/posts/<%= post.id %>/edit" class="button">Edit</a>
+                        
+                <a href="/posts/<%= post.id %>?_method=DELETE"
+                   onClick= " confirm('Delete: <%= post.title %>');"
+                   class="button">Delete</a>
+           
+        </article>
+    <% } %>
+    </section>
+
+<a href="/posts/new" class="button">Create New Post</a>
+</body>
+</html>
